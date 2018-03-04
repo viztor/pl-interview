@@ -1,14 +1,14 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { Welcome } from './Welcome';
-import { Activities } from './Activities'
+import { WelcomeScreen } from './WelcomeScreen';
+import { ActivitiesScreen } from './Activities/ActivitiesScreen'
 
 const App = StackNavigator({
   Home: {
-    screen: Welcome,
+    screen: WelcomeScreen,
   },
   Activities: {
-    screen: Activities,
+    screen: ActivitiesScreen,
   },
 });
 

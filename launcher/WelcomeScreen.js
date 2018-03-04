@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, SafeAreaView, View, Image, TouchableOpacity } from 'react-native';
 
-export class Welcome extends React.Component {
+export class WelcomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
