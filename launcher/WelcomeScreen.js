@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   mainImg: {
     maxHeight: 320,
     resizeMode: 'contain'
-  }
+  },
   btnContainer: {
     flex: 1,
     backgroundColor: '#D9F1F5',
