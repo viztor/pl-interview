@@ -1,10 +1,33 @@
 import React from 'react';
 import { StyleSheet, Text, SafeAreaView, View, Image, TouchableOpacity } from 'react-native';
+import { Audio } from 'expo';
 
+const soundObject = new Audio.Sound();
 export class WelcomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  async componentDidMount () {
+    const { navigation } = this.props
+    await soundObject.loadAsync(require('./assets/bgmusic.mp3'));
+    soundObject.playAsync();
+    this.willFocusListener = navigation.addListener(
+      'willFocus',
+      payload => {
+        soundObject.playAsync();
+      }
+    );
+    this.willBlurListener = navigation.addListener(
+      'willBlur',
+      payload => {
+        soundObject.stopAsync();
+      }
+    );
+  }
+  componentWillUnmount () {
+    this.willBlurListener.remove();
+    this.willFocusListener.remove();
+  }
   render() {
     return (
       <View style={styles.container}>
