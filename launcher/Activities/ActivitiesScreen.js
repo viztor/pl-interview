@@ -44,14 +44,15 @@ export class ActivitiesScreen extends React.Component {
       })
     })
     await soundObject.loadAsync(require('../assets/bgmusic.mp3'));
-    soundObject.playAsync();
-    soundObject.setOnPlaybackStatusUpdate(({isLoaded, positionMillis}) => {
-      if (isLoaded) {
+    soundObject.setOnPlaybackStatusUpdate(async ({isLoaded, isPlaying, positionMillis}) => {
+      if (isLoaded && isPlaying) {
         this.setState({musicPosition: positionMillis / 1000})
+      } else {
       }
     })
-    this.willFocusListener = navigation.addListener(
-      'willFocus',
+    soundObject.playAsync();
+    this.didFocusListener = navigation.addListener(
+      'didFocus',
       payload => {
         soundObject.playAsync();
       }
@@ -65,7 +66,8 @@ export class ActivitiesScreen extends React.Component {
   }
   componentWillUnmount () {
     this.willBlurListener.remove();
-    this.willFocusListener.remove();
+    this.didFocusListener.remove();
+    soundObject.unloadAsync()
   }
   render() {
     const { isLoading, dataSource } = this.state
