@@ -36,21 +36,12 @@ export class WelcomeScreen extends React.Component {
         </View>
         <View style={styles.imgContainer}>
           <Image
-            style={{
-              position:'absolute',
-              width: '100%',
-              resizeMode: 'cover',
-              maxHeight: 40,
-              bottom: 0,
-            }}
-            source={require('./img/hill.png')}
+            style={styles.hillImg}
+            source={require('./assets/hill.png')}
           />
           <Image
-            resizeMode='contain'
-            style={{
-              maxHeight: 320,
-            }}
-            source={require('./img/kangaroo.png')}
+            style={styles.mainImg}
+            source={require('./assets/kangaroo.png')}
           />
         </View>
         <View style={styles.btnContainer}>
@@ -89,6 +80,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 99,
   },
+  hillImg: {
+    position:'absolute',
+    width: '100%',
+    resizeMode: 'cover',
+    maxHeight: 40,
+    bottom: 0,
+  },
+  mainImg: {
+    maxHeight: 320,
+    resizeMode: 'contain'
+  }
   btnContainer: {
     flex: 1,
     backgroundColor: '#D9F1F5',
